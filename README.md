@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ChatGPT Lite
 
 English | [简体中文](./README.zh-CN.md)
@@ -67,3 +68,6 @@ We welcome PRs of any size.
 ## Disclaimers
 
 This code is intended solely for demonstration and testing purposes.
+=======
+# mastergpt-ui
+>>>>>>> be5e8d8d9a29a6ec3a6a4cf8aad9f46846296d31
