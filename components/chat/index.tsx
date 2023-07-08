@@ -9,7 +9,7 @@ import ChatContext from '@/contexts/chatContext'
 
 import Message from '../message'
 
-export interface ChatProps {}
+export interface ChatProps { }
 
 export interface ChatGPInstance {
   setConversation: (messages: ChatMessage[]) => void
@@ -18,19 +18,30 @@ export interface ChatGPInstance {
 }
 
 const postChatOrQuestion = async (chat: Chat, messages: any[], input: string) => {
-  const url = chat.persona?.key ? '/api/document/question' : '/api/chat'
-
+  // const url = chat.persona?.key ? '/api/document/question' : '/api/chat'
+  const url = "http://localhost:5000/api/chat"
+  console.log(messages)
   const data = chat.persona?.key
     ? {
-        key: chat.persona?.key,
-        messages: [...messages!],
-        question: input
-      }
+      key: chat.persona?.key,
+      messages: [...messages!],
+      question: input
+    }
     : {
-        prompt: chat?.persona?.prompt,
-        messages: [...messages!],
-        input
-      }
+      prompt: chat?.persona?.prompt,
+      messages: [...messages!],
+      input
+    }
+  
+
+
+
+  
+  // const data={
+  //   "message": "hello!. How are you. Please tell me a joke"
+    
+  // }
+
   return await fetch(url, {
     method: 'POST',
     headers: {
@@ -71,7 +82,7 @@ const Chat = (props: ChatProps, ref: any) => {
 
     try {
       const response = await postChatOrQuestion(currentChat!, conversation, input)
-
+      console.log(response)
       if (response.ok) {
         const data = response.body
 
