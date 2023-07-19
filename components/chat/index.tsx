@@ -19,7 +19,10 @@ export interface ChatGPInstance {
 
 const postChatOrQuestion = async (chat: Chat, messages: any[], input: string) => {
   // const url = chat.persona?.key ? '/api/document/question' : '/api/chat'
-  const url = "http://localhost:5000/api/chat"
+  // const url = "http://localhost:5000/api/chat"  //local server
+
+  // const url = 'https://master-gpt-backend-6d797a862970.herokuapp.com/api/chat' // heroku america backend
+  const url ='https://mastergpt-backend-eur-fc06439d795c.herokuapp.com/api/chat'
   console.log(messages)
   const data = chat.persona?.key
     ? {
@@ -32,14 +35,14 @@ const postChatOrQuestion = async (chat: Chat, messages: any[], input: string) =>
       messages: [...messages!],
       input
     }
-  
 
 
 
-  
+
+
   // const data={
   //   "message": "hello!. How are you. Please tell me a joke"
-    
+
   // }
 
   return await fetch(url, {
